@@ -1,0 +1,35 @@
+{
+  "name": "Netzwerke & Kryptographie",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "."
+  },
+
+  // Benutzer im Container
+  "remoteUser": "student",
+
+  // VS Code Erweiterungen (automatisch installiert)
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.live-server",
+        "yzhang.markdown-all-in-one",
+        "bierner.markdown-preview-github-styles"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "editor.fontSize": 14,
+        "markdown.preview.fontSize": 14
+      }
+    }
+  },
+
+  // Capabilities: NET_ADMIN wird für manche Netzwerk-Befehle benötigt
+  "runArgs": [
+    "--cap-add=NET_ADMIN"
+  ],
+
+  // Workspace-Ordner im Container
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind"
+}
